@@ -4,15 +4,24 @@ const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const {v4: uuidV4} = require('uuid')
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken')
 const PORT = process.env.PORT || 3000
+const {createToken, isSigned} = require('./utils/authentication')
+
+console.log()
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(cookieParser())
 
 
 app.get('/', (req,res) => {
+  res.redirect('/home')
+})
+app.get('/home', isSigned, (req,res) => {
   res.render('index')
 })
 
@@ -21,6 +30,9 @@ app.post('/room', (req,res) => {
   res.render('room', {room, username})
 })
 
+app.get('/login', (req,res) => {
+  res.render('signin')
+})
 
 io.on('connection', socket => {
   socket.on('join-room', ({room, userId, username}) => {
