@@ -4,9 +4,10 @@ const app = express()
 const server = require('http').createServer(app)
 const io = require('socket.io')(server)
 const {v4: uuidV4} = require('uuid')
+const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000 || 500
 const {createToken, isSigned} = require('./utils/authentication')
 
 console.log()
