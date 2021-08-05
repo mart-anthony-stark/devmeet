@@ -35,6 +35,8 @@ app.get('/login', (req,res) => {
   res.render('signin')
 })
 
+app.use('/auth', require('./routes/auth'))
+
 io.on('connection', socket => {
   socket.on('join-room', ({room, userId, username}) => {
     console.log({room, userId, username})

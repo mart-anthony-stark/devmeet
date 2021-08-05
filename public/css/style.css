@@ -4,5 +4,27 @@
   box-sizing: border-box;
 }
 :root{
-  
+  --c-primary: #0C1446;
+  --c-comp: #87ACA3;
+  --c-cta: #2B7C85;
+  --c-cta2: #175873;
+  --spacer: 1rem;
+}
+/* RESETS */
+a{text-decoration: none;}
+li{list-style: none;}
+
+/* HELPER CLASS */
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.col{
+  flex-direction: col;
+}
+.section{
+  min-height: 100vh;
+  background: var(--c-primary);
 }

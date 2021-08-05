@@ -15,5 +15,6 @@ module.exports = {
     }else{
       res.redirect('/login')
     }
-  }
+  },
+  maxAge: maxAge*1000
 }
