@@ -10,7 +10,6 @@ const jwt = require('jsonwebtoken')
 const PORT = process.env.PORT || 3000 || 500
 const {createToken, isSigned} = require('./utils/authentication')
 
-console.log()
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -19,24 +18,38 @@ app.use(express.json())
 app.use(cookieParser())
 
 
+mongoose.connect(process.env.URI, {
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+  useNewUrlParser: true
+}).then(()=>{
+      server.listen(PORT, (err) => {
+        if(err) console.log(err)
+        else console.log(`Server started at port ${PORT}`)
+      })
+}).catch(e => console.log(e))
+
+// 
 app.get('/', (req,res) => {
   res.redirect('/home')
 })
 app.get('/home', isSigned, (req,res) => {
   res.render('index')
 })
-
+// route for video chatroom
 app.post('/room', (req,res) => {
   const {username, room} = req.body
   res.render('room', {room, username})
 })
 
+// authentication routes
 app.get('/login', (req,res) => {
   res.render('signin')
 })
 
 app.use('/auth', require('./routes/auth'))
 
+// SETTING UP socket io for chat rooms
 io.on('connection', socket => {
   socket.on('join-room', ({room, userId, username}) => {
     console.log({room, userId, username})
@@ -49,7 +62,8 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(PORT, (err) => {
-  if(err) console.log(err)
-  else console.log(`Server started at port ${PORT}`)
+
+// page not found
+app.use((req,res)=> {
+  res.send('404: NOT FOUND')
 })

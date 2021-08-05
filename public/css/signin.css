@@ -1,0 +1,9 @@
+.signin-page{
+  min-height: 100vh;
+  background: var(--c-primary);
+  justify-content: space-around !important;
+}
+.signin-page .logo{
+  color: var(--c-font);
+  font-size: 5rem;
+}
