@@ -1,0 +1,153 @@
+nav{
+    position: absolute;
+    width: 100%;
+    padding: 25px;
+    color: var(--c-font);
+}
+nav .logo{
+    font-size: 1.5rem;
+    font-family: 'Mina', sans-serif;
+    letter-spacing: 1rem;
+    user-select: none;
+}
+.index .main .intro{
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    margin-left: 30px;
+}
+.index .main .intro .tagline{
+    font-size: 3rem;
+    color: var(--c-font);
+}
+.index .main .intro .tagline span{
+    display: block;
+}
+
+.index .main img{
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 600px;
+    height: 500px;
+    z-index: 1;
+}
+.btn.signup{
+    font-size: 1.5rem;
+    border-radius: 25px;
+    background: var(--c-cta);
+    color: var(--c-font);
+    cursor: pointer;
+    padding: 10px;
+    width: 300px;
+    margin-top: 35px;
+}
+.index .circle{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    background: var(--c-comp);
+    z-index: 1;
+}
+.circle#one{
+    top: -450px;
+    left: 20%;
+}
+.circle#two{
+    left: -430px;
+    bottom: -300px;
+    height: 700px;
+}
+.circle#three{
+    position: absolute;
+    bottom: -350px;
+    right: -350px;
+}
+.index .info{
+    padding: 0 0;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    place-items: center;
+}
+.index .info img{
+    width: 100%;
+}
+.index .info .right{
+    padding-right: 50px;
+    transform: translateY(-80px);
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.index .info span{
+    background: var(--c-font);
+    font-size: 2rem;
+    padding: 20px 30px;
+    border-radius: 25px;
+}
+.index .info p{
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    text-align: center;
+    color: var(--c-font);
+    max-width: 600px;
+}
+
+
+@media screen and (max-width: 926px){
+    .index .main img{
+        width: 500px;
+        height: 400px;
+        right: -50px;
+    }
+}
+@media (max-width: 678px){
+    .circle#one{
+        left: 10%;
+        transform: scale(.9);
+    }
+}
+@media (max-width: 606px){
+    .circle#one{
+        left: 10%;
+        top: 50px;
+        transform: scale(.5);
+    }
+    .index .main img{
+        
+    }
+    .index .main .intro .tagline{
+        font-size: 2rem;
+    }
+}
+@media (max-width: 375px){
+    .index .main .intro .tagline{
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: -50px;
+    }
+    .circle#one{
+        left: 10%;
+        top: 50px;
+        transform: scale(.2);
+    }
+    .circle#two{
+        transform: scale(.5);
+    }
+}
+@media (max-width:320px){
+    .btn.signup{
+        max-width: 200px;
+        font-size: 1rem;
+    }
+    .index .main img{
+        height: 50px;
+        
+    }
+}

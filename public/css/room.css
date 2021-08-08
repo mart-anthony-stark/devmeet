@@ -1,0 +1,35 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#video-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding: 20px;
+  background: var(--c-primary);
+  min-height: 100vh
+}
+/* #video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 400px));
+  grid-auto-rows: 300px;
+  gap: 10px;
+} */
+    
+video {
+  max-width: 500px;
+  width: 100%;
+  min-width: 250px;
+  max-height: 300px;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 904px){
+  #video-grid {
+    flex-wrap: wrap;
+  }
+}

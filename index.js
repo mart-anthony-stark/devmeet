@@ -33,8 +33,11 @@ mongoose.connect(process.env.URI, {
 app.get('/', (req,res) => {
   res.redirect('/home')
 })
-app.get('/home', isSigned, (req,res) => {
+app.get('/home', (req,res) => {
   res.render('index')
+})
+app.get('/rooms', (req,res) => {
+  res.render('room-home')
 })
 // route for video chatroom
 app.post('/room', (req,res) => {

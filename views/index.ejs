@@ -1,18 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video Chat</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>DevZen</title>
 </head>
 <body>
-  <form action="/room" method="POST">
-    <input type="text" name="username" placeholder="Name" />
-    <select name="room">
-      <option>JavaScript</option>
-      <option>JavaScript</option>
-    </select>
-  </form>
+    <div class="index" id="root">
+        <div class="circle" id="one"></div>
+        <nav class="spc-btwn">
+            <h3 class="logo">DevZen</h3>
+            <button class="btn-push"><span class="btn-front">Signin</span></button>
+        </nav>
+        <div class="main section spc-btwn">
+                <div class="intro">
+                    <h1 class="tagline">
+                        We Are Connecting You 
+                        <span>With The Digital Life</span>
+                    </h1>
+                    <button class="btn signup">CREATE ACCOUNT</button>
+                </div>
 
+                <img src="/img/front.png" alt="">
+                <div class="circle" id="two"></div>
+        </div>
+
+        <div class="info section">
+            <img src="/img/code.png" alt="">
+            <div class="right">
+                <span>Think. Code. Socialize</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime qui unde error cum, id voluptatem et quasi quaerat esse dolor earum iure quae accusantium voluptatibus!</p>
+            </div>
+            
+            <div class="circle" id="three"></div>
+        </div>
+
+    </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>

@@ -1,9 +1,70 @@
-.signin-page{
-  min-height: 100vh;
-  background: var(--c-primary);
-  justify-content: space-around !important;
+.section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+    align-items: center;
+    padding: 0 25px;
 }
-.signin-page .logo{
-  color: var(--c-font);
-  font-size: 5rem;
+.section img{
+    max-width: 400px;
+    width: 100%;
+}
+.login{
+    background: var(--c-font);
+    padding: 25px;
+    border-radius: 25px;
+    max-width: 500px;
+    width: 400px;
+}
+.login h2{
+    text-transform: uppercase;
+    text-align: center;
+}
+.input-field{
+    position: relative;
+    width: 100%;
+    margin: 50px 0;
+}
+.input-field label{
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+.input-field input{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--c-cta2);
+    outline: none;
+}
+input:focus,
+input:valid{
+    border-bottom: 2px solid var(--c-cta);
+}
+input:valid ~ label,
+input:focus ~ label{
+    top: -20px;
+}
+button{
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+}
+hr{
+    border: 1px solid var(--c-primary);
+}
+.login p{
+    text-align: center;
+    margin-top: 20px;
+}
+#sign{
+    cursor: pointer;
+    color: var(--c-comp);
+}
+@media (max-width: 400px){
+    .login{
+        width: auto;
+    }
 }
