@@ -1,11 +1,33 @@
 Vue.component('login', {
+    data(){
+      return{
+        email: null,
+        password: null,
+        emailErr: null,
+        passwordErr: null,
+      }
+    },
     methods:{
         changeComp(){
             this.$emit('change-component', 'signup')
         },
-        login(e){
+        async login(e){
             e.preventDefault()
-            console.log('LOGIN')
+            console.log('LOGIN', this.email)
+            console.log('LOGIN', this.password)
+
+            const res = await fetch('/auth/signin', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({email: this.email, password: this.password})
+            })
+            const data = await res.json()
+
+            if(data.emailError) this.emailErr = data.emailError
+            if(data.passwordError) this.passwordErr = data.passwordError
+
+            if(data.redirectUrl) window.location = data.redirectUrl
+            console.log(data)
         }
     },
     template: `<div>
@@ -13,13 +35,15 @@ Vue.component('login', {
                     <h2>login</h2>
                     <hr>
                     <div class="input-field">
-                        <input id="username" type="text" name="username" required>
-                        <label for="username">Username</label>
+                        <input id="email" type="text" name="email" v-model="email" required>
+                        <label for="username">Email</label>
                     </div>
+                    <p class="error">{{emailErr}}</p>
                     <div class="input-field">
-                        <input id="password" type="password" name="password" required>
+                        <input id="password" type="password" name="password" v-model="password" required>
                         <label for="password">Password</label>
                     </div>
+                    <p class="error">{{passwordErr}}</p>
                     <button class="btn-push"><span class="btn-front">signin</span></button>
                     <p>Doesn’t have an account? <span @click="changeComp" id="sign">Sign up<span></p>
                 </form>

@@ -28,8 +28,10 @@
 }
 .input-field label{
     position: absolute;
+    pointer-events: none;
     left: 0;
     top: -5px;
+    transition: .3s ease;
 }
 .input-field input{
     width: 100%;
@@ -62,6 +64,10 @@ hr{
 #sign{
     cursor: pointer;
     color: var(--c-comp);
+}
+p.error{
+  margin-top: -20px;
+  color: red;
 }
 @media (max-width: 400px){
     .login{
