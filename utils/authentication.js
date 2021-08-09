@@ -16,5 +16,15 @@ module.exports = {
       res.redirect('/login')
     }
   },
+  isNotAuth: (req,res,next)=> {
+    if(req.cookies.jwt){
+      jwt.verify(req.cookies.jwt, 'secret', (err, decodedToken)=> {
+        if(err) next()
+        else res.redirect('/home')
+      })
+    }else{
+      next()
+    }
+  },
   maxAge: maxAge*1000
 }

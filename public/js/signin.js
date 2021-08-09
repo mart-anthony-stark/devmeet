@@ -50,29 +50,48 @@ Vue.component('login', {
                 </div>`
 })
 Vue.component('signup', {
+    data(){
+      return{
+        name: null,
+        nameErr: null,
+        email: null,
+        password: null,
+        emailErr: null,
+        passwordErr: null,
+      }
+    },
     methods:{
         changeComp(){
             this.$emit('change-component', 'login')
         },
-        login(e){
+        async signup(e){
             e.preventDefault()
-            console.log('LOGIN')
+            console.log('signup', this.name, this.email, this.password)
+            const res = await fetch('/auth/signup', {
+              method: 'POST',
+              headers: {'Content-Type':'application/json'},
+              body: JSON.stringify({name:this.name, email: this.email, password: this.password})
+            })
+
+            const data = await res.json()
+            if(data.emailError) this.emailErr = data.emailError
+            if(data.redirectUrl) window.location = data.redirectUrl
         }
     },
     template: `<div>
-                <form class="login" @submit="login">
+                <form class="login" @submit="signup">
                     <h2>signup</h2>
                     <hr>
                     <div class="input-field">
-                        <input id="username" type="text" name="username" required>
+                        <input id="username" type="text" name="username" v-model="name" required>
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field">
-                        <input id="email" type="text" name="email" required>
+                        <input id="email" type="text" name="email" v-model="email" required>
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field">
-                        <input id="password" type="password" name="password" required>
+                        <input id="password" type="password" name="password" v-model="password" required>
                         <label for="password">Password</label>
                     </div>
                     <button class="btn-push"><span class="btn-front">signup</span></button>

@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken')
 const PORT = process.env.PORT || 3000 || 500
-const {createToken, isSigned} = require('./utils/authentication')
+const {createToken, isSigned, isNotAuth} = require('./utils/authentication')
 
 
 app.set('view engine', 'ejs')
@@ -30,11 +30,11 @@ mongoose.connect(process.env.URI, {
 }).catch(e => console.log(e))
 
 // 
-app.get('/', (req,res) => {
-  res.redirect('/home')
-})
-app.get('/home', (req,res) => {
+app.get('/',isNotAuth, (req,res) => {
   res.render('index')
+})
+app.get('/home', isSigned, (req,res) => {
+  res.send('HOME')
 })
 app.get('/rooms', (req,res) => {
   res.render('room-home')
@@ -46,7 +46,7 @@ app.post('/room', (req,res) => {
 })
 
 // authentication routes
-app.get('/login', (req,res) => {
+app.get('/login', isNotAuth, (req,res) => {
   res.render('signin')
 })
 

@@ -26,7 +26,7 @@ router.post('/signin', async(req,res) => {
   res.status(200).send({redirectUrl: '/home'})
 })
 
-// Signup rout
+// Signup route
 router.post('/signup', async(req,res) => {
   const {name, email, password} = req.body
   const emailExist = await User.findOne({email})
