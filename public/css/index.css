@@ -140,7 +140,7 @@ nav .logo{
         margin-top: -50px;
     }
     .circle#one{
-        left: 10%;
+        left: 0;
         top: 50px;
         transform: scale(.2);
     }
@@ -150,7 +150,7 @@ nav .logo{
     .index .main img{
       height: 200px;
       width: 200px;
-      right: 0;
+      right: 20px;
     }
 }
 @media (max-width:320px){
