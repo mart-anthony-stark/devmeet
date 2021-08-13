@@ -104,7 +104,7 @@ nav .logo{
     .index .main img{
         width: 500px;
         height: 400px;
-        right: -50px;
+        right: 20px;
     }
 }
 @media (max-width: 678px){
@@ -140,6 +140,11 @@ nav .logo{
     .circle#two{
         transform: scale(.5);
     }
+    .index .main img{
+      height: 200px;
+      width: 200px;
+      right: 0;
+    }
 }
 @media (max-width:320px){
     .btn.signup{
@@ -147,7 +152,7 @@ nav .logo{
         font-size: 1rem;
     }
     .index .main img{
-        height: 50px;
+        display: none;
         
     }
 }
