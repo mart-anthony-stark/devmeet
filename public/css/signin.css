@@ -73,4 +73,7 @@ p.error{
     .login{
         width: auto;
     }
+    .section{
+      gap: 25px;
+    }
 }

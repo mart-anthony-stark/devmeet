@@ -12,7 +12,6 @@ router.get('/', async (req,res)=>{
 // login authentication
 router.post('/signin', async(req,res) => {
   const {email, password} = req.body
-  console.log(email,password)
   const user = await User.findOne({email})
 
   if(!user) return res.status(400).json({emailError: 'Account does not exist'})
